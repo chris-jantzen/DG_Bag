@@ -18,11 +18,18 @@ export default function Header() {
             </Link>
           </li>
           {user?.isLoggedIn === false && (
-            <li>
-              <Link href='/login'>
-                <a>Login</a>
-              </Link>
-            </li>
+            <>
+              <li>
+                <Link href='/login'>
+                  <a>Login</a>
+                </Link>
+              </li>
+              <li>
+                <Link href='/signup'>
+                  <a>Sign Up</a>
+                </Link>
+              </li>
+            </>
           )}
           {user?.isLoggedIn === true && (
             <>
@@ -37,13 +44,9 @@ export default function Header() {
                         overflow: 'hidden',
                       }}
                     >
-                      <p style={{ textTransform: 'capitalize' }}>{user?.username}</p>
-                      {/* <Image
-                        src={user.avatarUrl}
-                        width={32}
-                        height={32}
-                        alt=""
-                      /> */}
+                      <p style={{ textTransform: 'capitalize' }}>
+                        {' | ' + (user?.email || 'email Missing') + ' | '}
+                      </p>
                     </span>
                     Profile (Static Generation, recommended)
                   </a>

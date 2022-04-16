@@ -18,7 +18,7 @@ export default function SgProfile() {
         </a>
       </h2>
       <div>
-        <p style={{ fontSize: '2rem', textTransform: 'capitalize' }}>{user?.username}</p>
+        <p style={{ fontSize: '2rem', textTransform: 'capitalize' }}>{user?.email}</p>
       </div>
     </Layout>
   );

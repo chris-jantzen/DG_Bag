@@ -1,17 +1,20 @@
-import { FormEvent } from 'react'
+import { FormEvent } from 'react';
 
 export default function Form({
   errorMessage,
+  isLogin,
   onSubmit,
 }: {
-  errorMessage: string
-  onSubmit: (e: FormEvent<HTMLFormElement>) => void
+  errorMessage: string;
+  isLogin: boolean;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }) {
   return (
     <form onSubmit={onSubmit}>
-      <div className='userName'>
-        <label htmlFor='username'>Username</label>
-        <input type='text' name='username' required />
+      <h2>{isLogin ? 'Log In' : 'Sign Up'}</h2>
+      <div className='email'>
+        <label htmlFor='email'>Email</label>
+        <input type='text' name='email' required />
       </div>
       <div className='password'>
         <label htmlFor='password'>Password</label>
@@ -23,6 +26,10 @@ export default function Form({
       {errorMessage && <p className='error'>{errorMessage}</p>}
 
       <style jsx>{`
+        h2 {
+          padding: 0.5rem 0 1rem;
+          margin: 0;
+        }
         form,
         label {
           display: flex;

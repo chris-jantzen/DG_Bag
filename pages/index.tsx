@@ -1,15 +1,15 @@
-import Layout from 'components/Layout'
-import Image from 'next/image'
+import Layout from 'components/Layout';
+import Image from 'next/image';
 
 export default function Home() {
   return (
     <Layout>
       <h1>
         <span style={{ marginRight: '.3em', verticalAlign: 'middle' }}>
-          <Image src="/GitHub-Mark-32px.png" width="32" height="32" alt="" />
+          <Image src='/GitHub-Mark-32px.png' width='32' height='32' alt='' />
         </span>
-        <a href="https://github.com/vvo/iron-session">iron-session</a> -
-        Authentication example
+        <a href='https://github.com/vvo/iron-session'>iron-session</a> - Authentication
+        example
       </h1>
 
       <p>
@@ -18,13 +18,12 @@ export default function Home() {
       </p>
 
       <p>
-        It uses current best practices as for authentication in the Next.js
-        ecosystem:
+        It uses current best practices as for authentication in the Next.js ecosystem:
         <br />
         1. <b>no `getInitialProps`</b> to ensure every page is static
         <br />
-        2. <b>`useUser` hook</b> together with `
-        <a href="https://swr.vercel.app/">swr`</a> for data fetching
+        2. <b>`useUser` hook</b> together with `<a href='https://swr.vercel.app/'>swr`</a>{' '}
+        for data fetching
       </p>
 
       <h2>Features</h2>
@@ -39,14 +38,14 @@ export default function Home() {
       <h2>Steps to test the functionality:</h2>
 
       <ol>
-        <li>Click login and enter your GitHub username.</li>
+        <li>Click login and enter your GitHub email.</li>
         <li>
-          Click home and click profile again, notice how your session is being
-          used through a token stored in a cookie.
+          Click home and click profile again, notice how your session is being used
+          through a token stored in a cookie.
         </li>
         <li>
-          Click logout and try to go to profile again. You&apos;ll get
-          redirected to the `/login` route.
+          Click logout and try to go to profile again. You&apos;ll get redirected to the
+          `/login` route.
         </li>
       </ol>
       <style jsx>{`
@@ -55,5 +54,5 @@ export default function Home() {
         }
       `}</style>
     </Layout>
-  )
+  );
 }

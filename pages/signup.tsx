@@ -4,7 +4,7 @@ import Layout from 'components/Layout';
 import Form from 'components/Form';
 import fetchJson, { FetchError } from 'lib/fetchJson';
 
-export default function Login() {
+export default function Signup() {
   // here we just check if user is already logged in and redirect to profile
   const { mutateUser } = useUser({
     redirectTo: '/profile-sg',
@@ -25,7 +25,7 @@ export default function Login() {
 
     try {
       mutateUser(
-        await fetchJson('/api/login', {
+        await fetchJson('/api/signup', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),
@@ -43,7 +43,7 @@ export default function Login() {
   return (
     <Layout>
       <div className='login'>
-        <Form errorMessage={errorMsg} isLogin={true} onSubmit={handleSubmit} />
+        <Form errorMessage={errorMsg} isLogin={false} onSubmit={handleSubmit} />
       </div>
       <style jsx>{`
         .login {

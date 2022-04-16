@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id       String @id @default(cuid())
+  email    String @unique
+  password String
+  Bag      Bag[]
+}
+
+model Bag {
+  id     String @id @default(cuid())
+  name   String
+  discs  Disc[]
+  userId String
+  User   User   @relation(fields: [userId], references: [id])
+}
+
+model Disc {
+  id           String  @id @default(cuid())
+  name         String
+  manufacturer String?
+  plastic      String?
+  weight       Int?
+  speed        Int
+  glide        Int
+  turn         Float
+  fade         Float
+  color        String
+  notes        String?
+  bagId        String
+  Bag          Bag     @relation(fields: [bagId], references: [id])
+}

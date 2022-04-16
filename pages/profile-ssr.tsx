@@ -23,7 +23,7 @@ export default function SsrProfile({
         </a>
       </h2>
       <div>
-        <p style={{ fontSize: '2rem', textTransform: 'capitalize' }}>{user?.username}</p>
+        <p style={{ fontSize: '2rem', textTransform: 'capitalize' }}>{user?.email}</p>
       </div>
     </Layout>
   );
@@ -38,7 +38,7 @@ export const getServerSideProps = withIronSessionSsr(async function ({ req, res 
     res.end();
     return {
       props: {
-        user: { isLoggedIn: false, username: '' } as User,
+        user: { isLoggedIn: false, email: '' } as User,
       },
     };
   }
