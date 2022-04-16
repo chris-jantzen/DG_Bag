@@ -1,25 +1,25 @@
-import Link from 'next/link'
-import useUser from 'lib/useUser'
-import { useRouter } from 'next/router'
-import Image from 'next/image'
-import fetchJson from 'lib/fetchJson'
+import Link from 'next/link';
+import useUser from 'lib/useUser';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+import fetchJson from 'lib/fetchJson';
 
 export default function Header() {
-  const { user, mutateUser } = useUser()
-  const router = useRouter()
+  const { user, mutateUser } = useUser();
+  const router = useRouter();
 
   return (
     <header>
       <nav>
         <ul>
           <li>
-            <Link href="/">
+            <Link href='/'>
               <a>Home</a>
             </Link>
           </li>
           {user?.isLoggedIn === false && (
             <li>
-              <Link href="/login">
+              <Link href='/login'>
                 <a>Login</a>
               </Link>
             </li>
@@ -27,7 +27,7 @@ export default function Header() {
           {user?.isLoggedIn === true && (
             <>
               <li>
-                <Link href="/profile-sg">
+                <Link href='/profile-sg'>
                   <a>
                     <span
                       style={{
@@ -37,32 +37,30 @@ export default function Header() {
                         overflow: 'hidden',
                       }}
                     >
-                      <Image
+                      <p style={{ textTransform: 'capitalize' }}>{user?.username}</p>
+                      {/* <Image
                         src={user.avatarUrl}
                         width={32}
                         height={32}
                         alt=""
-                      />
+                      /> */}
                     </span>
                     Profile (Static Generation, recommended)
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/profile-ssr">
+                <Link href='/profile-ssr'>
                   <a>Profile (Server-side Rendering)</a>
                 </Link>
               </li>
               <li>
                 <a
-                  href="/api/logout"
+                  href='/api/logout'
                   onClick={async (e) => {
-                    e.preventDefault()
-                    mutateUser(
-                      await fetchJson('/api/logout', { method: 'POST' }),
-                      false
-                    )
-                    router.push('/login')
+                    e.preventDefault();
+                    mutateUser(await fetchJson('/api/logout', { method: 'POST' }), false);
+                    router.push('/login');
                   }}
                 >
                   Logout
@@ -71,13 +69,8 @@ export default function Header() {
             </>
           )}
           <li>
-            <a href="https://github.com/vvo/iron-session">
-              <Image
-                src="/GitHub-Mark-Light-32px.png"
-                width="32"
-                height="32"
-                alt=""
-              />
+            <a href='https://github.com/vvo/iron-session'>
+              <Image src='/GitHub-Mark-Light-32px.png' width='32' height='32' alt='' />
             </a>
           </li>
         </ul>
@@ -117,5 +110,5 @@ export default function Header() {
         }
       `}</style>
     </header>
-  )
+  );
 }

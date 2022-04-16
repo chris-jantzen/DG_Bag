@@ -13,35 +13,38 @@ export default function Login() {
 
   const [errorMsg, setErrorMsg] = useState('')
 
+  const handleSubmit = async function handleSubmit(
+    event: React.FormEvent<HTMLFormElement>
+  ) {
+    event.preventDefault();
+
+    const body = {
+      username: event.currentTarget.username.value,
+      password: event.currentTarget.password.value,
+    };
+    console.log(body);
+
+    try {
+      mutateUser(
+        await fetchJson('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        })
+      );
+    } catch (error) {
+      if (error instanceof FetchError) {
+        setErrorMsg(error.data.message);
+      } else {
+        console.error('An unexpected error happened:', error);
+      }
+    }
+  };
+
   return (
     <Layout>
-      <div className="login">
-        <Form
-          errorMessage={errorMsg}
-          onSubmit={async function handleSubmit(event) {
-            event.preventDefault()
-
-            const body = {
-              username: event.currentTarget.username.value,
-            }
-
-            try {
-              mutateUser(
-                await fetchJson('/api/login', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify(body),
-                })
-              )
-            } catch (error) {
-              if (error instanceof FetchError) {
-                setErrorMsg(error.data.message)
-              } else {
-                console.error('An unexpected error happened:', error)
-              }
-            }
-          }}
-        />
+      <div className='login'>
+        <Form errorMessage={errorMsg} onSubmit={handleSubmit} />
       </div>
       <style jsx>{`
         .login {
@@ -53,5 +56,5 @@ export default function Login() {
         }
       `}</style>
     </Layout>
-  )
+  );
 }

@@ -9,14 +9,18 @@ export default function Form({
 }) {
   return (
     <form onSubmit={onSubmit}>
-      <label>
-        <span>Type your GitHub username</span>
-        <input type="text" name="username" required />
-      </label>
+      <div className='userName'>
+        <label htmlFor='username'>Username</label>
+        <input type='text' name='username' required />
+      </div>
+      <div className='password'>
+        <label htmlFor='password'>Password</label>
+        <input type='password' name='password' required />
+      </div>
 
-      <button type="submit">Login</button>
+      <button type='submit'>Login</button>
 
-      {errorMessage && <p className="error">{errorMessage}</p>}
+      {errorMessage && <p className='error'>{errorMessage}</p>}
 
       <style jsx>{`
         form,
@@ -24,7 +28,7 @@ export default function Form({
           display: flex;
           flex-flow: column;
         }
-        label > span {
+        span {
           font-weight: 600;
         }
         input {
@@ -32,6 +36,7 @@ export default function Form({
           margin: 0.3rem 0 1rem;
           border: 1px solid #ccc;
           border-radius: 4px;
+          width: 100%;
         }
         .error {
           color: brown;
@@ -39,5 +44,5 @@ export default function Form({
         }
       `}</style>
     </form>
-  )
+  );
 }
