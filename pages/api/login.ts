@@ -18,7 +18,7 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
       where: { email: email },
     });
     if (!userFromDb) {
-      return res.status(404).send(`User with email: ${email} not found`);
+      return res.status(404).send({ message: `User with email: ${email} not found` });
     }
     const auth: boolean = await bcrypt.compare(password, userFromDb.password);
     if (auth) {
@@ -28,7 +28,8 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
       await req.session.save();
       res.status(200).send(user);
     } else {
-      res.status(400).send(`Incorrect password for ${email}`);
+      console.log('INCORRECT PASSWORD FOR EMAIL');
+      res.status(400).json({ message: `Incorrect password for ${email}` });
     }
   } catch (error) {
     res.status(500).json({ message: (error as Error).message });
