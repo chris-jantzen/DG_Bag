@@ -1,3 +1,4 @@
+import { Button, FormControl, FormLabel, Heading, Input } from '@chakra-ui/react';
 import { FormEvent } from 'react';
 
 export default function Form({
@@ -11,17 +12,21 @@ export default function Form({
 }) {
   return (
     <form onSubmit={onSubmit}>
-      <h2>{isLogin ? 'Log In' : 'Sign Up'}</h2>
-      <div className='email'>
-        <label htmlFor='email'>Email</label>
-        <input type='text' name='email' required />
-      </div>
-      <div className='password'>
-        <label htmlFor='password'>Password</label>
-        <input type='password' name='password' required />
-      </div>
+      <Heading as='h2' py={2} fontSize='2rem'>
+        {isLogin ? 'Log In' : 'Sign Up'}
+      </Heading>
+      <FormControl py={2}>
+        <FormLabel htmlFor='email'>Email</FormLabel>
+        <Input type='text' name='email' placeholder='example@email.com' required />
+      </FormControl>
+      <FormControl py={2}>
+        <FormLabel htmlFor='password'>Password</FormLabel>
+        <Input type='password' name='password' required />
+      </FormControl>
 
-      <button type='submit'>Login</button>
+      <Button type='submit' my={2}>
+        Login
+      </Button>
 
       {errorMessage && <p className='error'>{errorMessage}</p>}
 

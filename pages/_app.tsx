@@ -1,6 +1,7 @@
-import { AppProps } from 'next/app'
-import { SWRConfig } from 'swr'
-import fetchJson from 'lib/fetchJson'
+import { AppProps } from 'next/app';
+import { SWRConfig } from 'swr';
+import fetchJson from 'lib/fetchJson';
+import { ChakraProvider } from '@chakra-ui/react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -8,13 +9,15 @@ function MyApp({ Component, pageProps }: AppProps) {
       value={{
         fetcher: fetchJson,
         onError: (err) => {
-          console.error(err)
+          console.error(err);
         },
       }}
     >
-      <Component {...pageProps} />
+      <ChakraProvider resetCSS={true}>
+        <Component {...pageProps} />
+      </ChakraProvider>
     </SWRConfig>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

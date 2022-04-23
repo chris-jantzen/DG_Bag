@@ -3,6 +3,7 @@ import useUser from 'lib/useUser';
 import Layout from 'components/Layout';
 import Form from 'components/Form';
 import fetchJson, { FetchError } from 'lib/fetchJson';
+import { Box } from '@chakra-ui/react';
 
 export default function Login() {
   // here we just check if user is already logged in and redirect to profile
@@ -42,18 +43,9 @@ export default function Login() {
 
   return (
     <Layout>
-      <div className='login'>
-        <Form errorMessage={errorMsg} isLogin={true} onSubmit={handleSubmit} />
-      </div>
-      <style jsx>{`
-        .login {
-          max-width: 21rem;
-          margin: 0 auto;
-          padding: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-      `}</style>
+      <Box maxW='35vw' m='0 auto' p='1rem' border='1px solid #ccc' borderRadius='4px'>
+        <Form errorMessage={errorMsg} isLogin={false} onSubmit={handleSubmit} />
+      </Box>
     </Layout>
   );
 }

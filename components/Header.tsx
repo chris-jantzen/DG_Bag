@@ -34,30 +34,6 @@ export default function Header() {
           {user?.isLoggedIn === true && (
             <>
               <li>
-                <Link href='/profile-sg'>
-                  <a>
-                    <span
-                      style={{
-                        marginRight: '.3em',
-                        verticalAlign: 'middle',
-                        borderRadius: '100%',
-                        overflow: 'hidden',
-                      }}
-                    >
-                      <p style={{ textTransform: 'capitalize' }}>
-                        {' | ' + (user?.email || 'email Missing') + ' | '}
-                      </p>
-                    </span>
-                    Profile (Static Generation, recommended)
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href='/profile-ssr'>
-                  <a>Profile (Server-side Rendering)</a>
-                </Link>
-              </li>
-              <li>
                 <a
                   href='/api/logout'
                   onClick={async (e) => {
@@ -73,6 +49,7 @@ export default function Header() {
           )}
           <li>
             <a href='https://github.com/vvo/iron-session'>
+              {/* TODO: add custom logo or something */}
               <Image src='/GitHub-Mark-Light-32px.png' width='32' height='32' alt='' />
             </a>
           </li>
@@ -107,9 +84,13 @@ export default function Header() {
         }
 
         header {
+          height: 50px;
           padding: 0.2rem;
           color: #fff;
           background-color: #333;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
         }
       `}</style>
     </header>
