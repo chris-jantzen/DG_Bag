@@ -37,6 +37,7 @@ model Disc {
   fade         Float
   color        String
   notes        String?
+  show         Boolean @default(true)
   bagId        String
   Bag          Bag     @relation(fields: [bagId], references: [id])
 }

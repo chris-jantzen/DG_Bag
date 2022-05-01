@@ -1,40 +1,61 @@
-import Link from 'next/link';
+import NextLink from 'next/link';
 import useUser from 'lib/useUser';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import fetchJson from 'lib/fetchJson';
+import { Box, Heading, Link, List, ListItem } from '@chakra-ui/react';
 
 export default function Header() {
   const { user, mutateUser } = useUser();
   const router = useRouter();
 
   return (
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <Link href='/'>
-              <a>Home</a>
-            </Link>
-          </li>
+    <Box
+      as='header'
+      h='50px'
+      p='0.2rem'
+      color='#fff'
+      bgColor='#48a6e9'
+      display='flex'
+      alignItems='center'
+      justifyContent='flex-end'
+      position='static'
+    >
+      <Heading
+        as='h1'
+        position='absolute'
+        color='#fff'
+        left='50%'
+        transform='translateX(-50%)'
+        fontSize='3xl'
+      >
+        Disc Storage
+      </Heading>
+      <Box as='nav'>
+        <List display='flex' flexDirection='row' alignItems='center'>
+          <ListItem px='1rem'>
+            <NextLink href='/' passHref>
+              <Link>Home</Link>
+            </NextLink>
+          </ListItem>
           {user?.isLoggedIn === false && (
             <>
-              <li>
-                <Link href='/login'>
-                  <a>Login</a>
-                </Link>
-              </li>
-              <li>
-                <Link href='/signup'>
-                  <a>Sign Up</a>
-                </Link>
-              </li>
+              <ListItem px='1rem'>
+                <NextLink href='/login' passHref>
+                  <Link>Login</Link>
+                </NextLink>
+              </ListItem>
+              <ListItem px='1rem'>
+                <NextLink href='/signup' passHref>
+                  <Link>Sign Up</Link>
+                </NextLink>
+              </ListItem>
             </>
           )}
           {user?.isLoggedIn === true && (
             <>
-              <li>
-                <a
+              <ListItem px='1rem'>
+                <Link
                   href='/api/logout'
                   onClick={async (e) => {
                     e.preventDefault();
@@ -43,56 +64,17 @@ export default function Header() {
                   }}
                 >
                   Logout
-                </a>
-              </li>
+                </Link>
+              </ListItem>
             </>
           )}
-          <li>
-            <a href='https://github.com/vvo/iron-session'>
-              {/* TODO: add custom logo or something */}
+          {/* <ListItem px='1rem'>
+            <Link>
               <Image src='/GitHub-Mark-Light-32px.png' width='32' height='32' alt='' />
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <style jsx>{`
-        ul {
-          display: flex;
-          list-style: none;
-          margin-left: 0;
-          padding-left: 0;
-        }
-
-        li {
-          margin-right: 1rem;
-          display: flex;
-        }
-
-        li:first-child {
-          margin-left: auto;
-        }
-
-        a {
-          color: #fff;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-        }
-
-        a img {
-          margin-right: 1em;
-        }
-
-        header {
-          height: 50px;
-          padding: 0.2rem;
-          color: #fff;
-          background-color: #333;
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-        }
-      `}</style>
-    </header>
+            </Link>
+          </ListItem> */}
+        </List>
+      </Box>
+    </Box>
   );
 }
