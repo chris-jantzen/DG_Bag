@@ -1,5 +1,6 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
-import Disc, { DiscProps, DiscProperties } from './Disc';
+import Disc from './Disc';
+import { DiscProperties } from "../../models/disc";
 import React from 'react';
 
 const Bag: React.FC = () => {
@@ -18,8 +19,20 @@ const Bag: React.FC = () => {
       color: '#d52b57',
     },
     {
-      name: 'P Model S',
+      name: 'Vulture',
       id: '2',
+      manufacturer: 'Discraft',
+      plastic: 'Titanium',
+      weight: 172,
+      speed: 10,
+      glide: 5,
+      turn: 0,
+      fade: 2,
+      color: '#b115eb',
+    },
+    {
+      name: 'P Model S',
+      id: '3',
       manufacturer: 'Prodigy',
       plastic: 'Base Grip',
       weight: 173,
@@ -31,10 +44,10 @@ const Bag: React.FC = () => {
     },
     {
       name: 'P Model S',
-      id: '3',
+      id: '4',
       manufacturer: 'Prodigy',
       plastic: 'Base Grip',
-      weight: 173,
+      weight: 175,
       speed: 3,
       glide: 5,
       turn: 0,

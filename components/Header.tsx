@@ -32,7 +32,7 @@ export default function Header() {
         Disc Storage
       </Heading>
       <Box as='nav'>
-        <List display='flex' flexDirection='row' alignItems='center'>
+        <List display='flex' flexDirection='row' alignItems='center' fontWeight='600'>
           <ListItem px='1rem'>
             <NextLink href='/' passHref>
               <Link>Home</Link>
