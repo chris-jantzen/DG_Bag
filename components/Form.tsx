@@ -10,10 +10,11 @@ export default function Form({
   isLogin: boolean;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }) {
+  const label = isLogin ? 'Log In' : 'Sign Up';
   return (
     <form onSubmit={onSubmit}>
       <Heading as='h2' py={2} fontSize='2rem'>
-        {isLogin ? 'Log In' : 'Sign Up'}
+        {label}
       </Heading>
       <FormControl py={2}>
         <FormLabel htmlFor='email'>Email</FormLabel>
@@ -25,7 +26,7 @@ export default function Form({
       </FormControl>
 
       <Button type='submit' my={2}>
-        Login
+        {label}
       </Button>
 
       {errorMessage && <p className='error'>{errorMessage}</p>}

@@ -21,14 +21,7 @@ export default function Header() {
       justifyContent='flex-end'
       position='static'
     >
-      <Heading
-        as='h1'
-        position='absolute'
-        color='#fff'
-        left='50%'
-        transform='translateX(-50%)'
-        fontSize='3xl'
-      >
+      <Heading as='h1' position='absolute' color='#fff' left='50%' transform='translateX(-50%)' fontSize='3xl'>
         Disc Storage
       </Heading>
       <Box as='nav'>
@@ -63,7 +56,7 @@ export default function Header() {
                     router.push('/login');
                   }}
                 >
-                  Logout
+                  Log Out
                 </Link>
               </ListItem>
             </>

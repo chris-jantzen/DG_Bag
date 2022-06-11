@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
-import Bag from 'components/discs/Bag';
-import Layout from 'components/Layout';
+import { Box, Flex, Grid, GridItem, Input, Text } from '@chakra-ui/react';
+import Bag from '../components/discs/Bag';
+import Layout from '../components/Layout';
 
 export default function Home() {
   const bagIds = [1];
+
   return (
     <Layout>
       {/* <Heading as='h1'>Disc Storage</Heading> */}
@@ -19,14 +20,7 @@ export default function Home() {
                 </Text>
               </Flex>
             </Box>
-            <Flex
-              as='section'
-              paddingTop={2}
-              h='90%'
-              flexDirection='column'
-              overflowY='auto'
-              overflowX='hidden'
-            >
+            <Flex as='section' paddingTop={2} h='90%' flexDirection='column' overflowY='auto' overflowX='hidden'>
               {bagIds.map((bag) => (
                 <Bag key={bag} />
               ))}
